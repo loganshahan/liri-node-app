@@ -40,33 +40,33 @@ function switchCase(command, searchName){
 function bandInTown(searchName){
     var queryUrl = "https://rest.bandsintown.com/artists/" + searchName + "/events?app_id=codingbootcamp";
     console.log(queryUrl);
-    // axios.get(queryUrl).then(function(response){
-    //     console.log(response.data);
-    // })
+    axios.get(queryUrl).then(function(response){
+        console.log(response.data);
+    })
 
-    request(queryUrl, function(error, response, body){
-        if(!error && response.statusCode === 200){
-            var concertData = JSON.parse(body);
-            // for (i = 0; i < concertData.length; i++) {
-            //     // console.log(createLine);
-            //     console.log("Venue: " + concertData[i].venue.name);
-            //     console.log("City: " + concertData[i].venue.city + ", " + concertData[i].venue.country);
-            //     console.log(moment(concertData[i].datetime).format("MM/DD/YY"));
-            // }
+    // request(queryUrl, function(error, response, body){
+    //     if(!error && response.statusCode === 200){
+    //         var concertData = JSON.parse(body);
+    //         // for (i = 0; i < concertData.length; i++) {
+    //         //     // console.log(createLine);
+    //         //     console.log("Venue: " + concertData[i].venue.name);
+    //         //     console.log("City: " + concertData[i].venue.city + ", " + concertData[i].venue.country);
+    //         //     console.log(moment(concertData[i].datetime).format("MM/DD/YY"));
+    //         // }
             
 
-            // var concertDT = concertData[0].datetime;
-            // var momentDT = moment().format('L');
+    //         // var concertDT = concertData[0].datetime;
+    //         // var momentDT = moment().format('L');
 
-            console.log("Venue Name: " + concertData.venue.name);
-            // console.log("Venue location: " + concertData.venue.city + ", " + concertData.venue.country);
-            // console.log(moment(concertData[0].datetime).format("MM/DD/YY"));
+    //         console.log("Venue Name: " + concertData.venue.name);
+    //         // console.log("Venue location: " + concertData.venue.city + ", " + concertData.venue.country);
+    //         // console.log(moment(concertData[0].datetime).format("MM/DD/YY"));
 
-        }
-        else{
-            console.log(error);
-        }
-    })
+    //     }
+    //     else{
+    //         console.log(error);
+    //     }
+    // })
     
 };
 function spotSong(searchName)
@@ -102,10 +102,28 @@ function omdb(searchName){
     console.log("Plot Summary: " + response.data.Plot);
     console.log("Actors: " + response.data.Actors);
   }
+  
 );
+  
 };
 function doWhat(){
-
-};
+    fs.readFile("random.txt", "utf8", function (error, data) {
+        if (error) {
+            return console.log(error);
+          }
+        
+          // We will then print the contents of data
+          console.log(data);
+        
+          // Then split it by commas (to make it more readable)
+          var dataArr = data.split(",");
+        
+          // We will then re-display the content as an array for later use.
+          console.log(dataArr);
+  
+          switchCase(dataArr[0], dataArr[1]);  
+}
+    );
+}
 
 switchCase(command, searchName);
