@@ -41,7 +41,9 @@ function bandInTown(searchName){
     var queryUrl = "https://rest.bandsintown.com/artists/" + searchName + "/events?app_id=codingbootcamp";
     console.log(queryUrl);
     axios.get(queryUrl).then(function(response){
-        console.log(response.data);
+        console.log("Venue name: " + response.data[0].venue.name);
+        console.log("Venue location: " + response.data[0].venue.city +" " + response.data[0].venue.country);
+        console.log(moment(response.data[0].datetime).format("MM/DD/YY"));
     })
 
     // request(queryUrl, function(error, response, body){
