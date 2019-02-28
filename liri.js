@@ -12,7 +12,7 @@ var moment = require('moment');
 moment().format();
 
 var command = process.argv[2];
-var searchName = process.argv[3];
+var searchName = process.argv.slice(3).join(" ");
 
 function switchCase(command, searchName){
     switch (command){
